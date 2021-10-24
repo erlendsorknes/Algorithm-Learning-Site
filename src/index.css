@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+:root{
+  --navbar-size: 100vw;
+}
+.navbar {
+  width: var(--navbar-size);
+  height: 2rem;
+  position: absolute;
+  top: 0%;
+  background-color: aquamarine;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+
+.navbar-item{
+  width: 100%;
+}
+
+.navbar-item:hover{
+  opacity: 0.7;
+  background-color: blue;
+}

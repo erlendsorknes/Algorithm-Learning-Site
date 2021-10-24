@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <Navbar/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -21,6 +22,25 @@ function App() {
       </header>
     </div>
   );
+}
+
+function Navbar() {
+    return (
+        <div className="navbar">
+          
+            <NavbarItem/>
+            <NavbarItem/>
+            <NavbarItem/>
+            <NavbarItem/>
+            <NavbarItem/>
+        </div>
+    )
+}
+
+function NavbarItem() {
+  return (
+    <div className="navbar-item">Temp</div>
+  )
 }
 
 export default App;
