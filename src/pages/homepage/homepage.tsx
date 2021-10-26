@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from '../../../logo.svg';
-import '../../../App.css';
-import Header from "../../header/header";
+import '../../App.css';
+import {Input, Stack} from "@chakra-ui/react";
+import Navbar from '../../components/Navbar';
 
 function Homepage() {
   return (
-    <div className="homepage">
-     <Header />
-    </div>
+      <div>
+        <Navbar />
+      </div>
   );
 }
 
