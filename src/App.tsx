@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -24,10 +24,17 @@ function App() {
   );
 }
 
+function getResult() {
+  return "prekgeoprkgrpo";
+}
+
 function Navbar() {
+  const [result, setResult] = useState("");
+
     return (
         <div className="navbar">
-          
+            <button onClick={() => setResult(getResult())}></button>
+            {result !== "" ? <span>{result}</span>:null}
             <NavbarItem/>
             <NavbarItem/>
             <NavbarItem/>
@@ -35,6 +42,9 @@ function Navbar() {
             <NavbarItem/>
         </div>
     )
+
+
+
 }
 
 function NavbarItem() {
