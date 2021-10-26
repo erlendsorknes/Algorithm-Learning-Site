@@ -10,4 +10,5 @@ The site is made such that students can visually see and learn about common algo
 
 - Erlend Sorknes
 - Mattis Hembre
+- Henrik Skog
 
