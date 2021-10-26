@@ -19,10 +19,11 @@ const Frontpage = () => {
                 <Heading
                  fontWeight ={600}
                  fontSize={{base: '3xl', sm: '4xl', md: '6xl'}}
-                 lineHeight={'110%'}>
+                 lineHeight={'110%'}
+                >
                     Algorithms made easy{' '}
                 </Heading>
-                <Text color={'gray.500'} maxW={'3xl'} lineHeight={'150%'}>
+                <Text color={'gray.500'} maxW={'3xl'} lineHeight={'150%'} >
                     A visual learning site for algorithms and datastructures.
                     Illustrative animations, pseudocode and descriptive descriptions.
                 </Text>
@@ -30,13 +31,13 @@ const Frontpage = () => {
                     <Button
                     rounded={'full'}
                     px={6}
-                    colorScheme={'blue'}>
+                    colorScheme={'red'}>
                     Algorithms
                     </Button>
                     <Button
                     rounded={'full'}
                     px={6}
-                    colorScheme={'red'}>
+                    colorScheme={'blue'}>
                     Datastructures
                     </Button>
                 </Stack>
