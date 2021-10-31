@@ -1,25 +1,21 @@
-import { ReactNode } from 'react';
+import {ReactNode} from 'react';
 import {
-  Box,
-  Flex,
-  Avatar,
-  HStack,
-  Link,
-  IconButton,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
-  useColorMode,
-  Stack,
+    Box,
+    Button,
+    Flex,
+    HStack,
+    IconButton,
+    Link,
+    Menu,
+    MenuDivider,
+    MenuItem,
+    MenuList,
+    Stack,
+    useColorMode,
+    useColorModeValue,
+    useDisclosure,
 } from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-
-
+import {MoonIcon, SunIcon} from '@chakra-ui/icons';
 
 
 const Links = ['Algorithms', 'Datastructures', 'Help us'];
