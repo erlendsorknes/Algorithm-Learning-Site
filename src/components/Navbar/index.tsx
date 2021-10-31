@@ -15,22 +15,30 @@ import {
     useColorModeValue,
     useDisclosure,
 } from '@chakra-ui/react';
+import {Link as RouterLink} from "react-router-dom"
 import {MoonIcon, SunIcon} from '@chakra-ui/icons';
 
 
-const Links = ['Algorithms', 'Datastructures', 'Help us'];
+const links = ['Algorithms', 'Datastructures', 'Help Us'];
 
-const NavLink = ({ children }: { children: ReactNode }) => (
+interface NavLinkProps {
+    children?: ReactNode;
+    link: string;
+}
+
+const NavLink = ({ children, link }: NavLinkProps) => (
   <Link
     px={2}
     py={1}
-    rounded={'md'}
+    rounded='md'
     _hover={{
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    href={'#'}>
-    {children}
+    >
+      <RouterLink to={link}>
+          {children}
+      </RouterLink>
   </Link>
 );
 
@@ -49,13 +57,13 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box>🍀</Box>
+            <NavLink link={"/"}>🍀</NavLink>
             <HStack
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {links.map((link) => (
+                <NavLink link={link.toLowerCase()} key={link}>{link}</NavLink>
               ))}
             </HStack>
           </HStack>
@@ -77,8 +85,8 @@ export default function Navbar() {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {links.map((link) => (
+                <NavLink key={link} link={link.toLowerCase()}>{link}</NavLink>
               ))}
             </Stack>
           </Box>
