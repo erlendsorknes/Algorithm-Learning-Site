@@ -11,7 +11,7 @@ const Footer = () => (
             <h2><b>Contributors:</b></h2>
             <p>Erlend Sorknes</p>
             <p>Mattis Czternasty Hembre</p>
-            <p>Henrik Bjørnstad Skog</p>
+            <p>Henrik Johannes Bjørnstad Skog</p>
         </Flex>
         <Flex direction="column" p="4" rounded="6">
             <h2><b>Contact us:</b></h2>
