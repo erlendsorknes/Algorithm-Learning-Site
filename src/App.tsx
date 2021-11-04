@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Frontpage from "./components/Frontpage";
 import Algorithms from "./pages/Algorithms";
 import Footer from './components/Footer';
+import Bubble from './components/Bubble'
 
 interface NavRouteProps {
     exact: boolean,
@@ -18,6 +19,7 @@ const NavRoute: React.FC<NavRouteProps> = ({exact, path, component}) => (
             <Navbar/>
             {component}
             <Footer />
+            <Bubble></Bubble>
         </div>
     )}/>
 )
