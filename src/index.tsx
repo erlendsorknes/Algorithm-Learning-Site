@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import {BrowserRouter as Router,} from "react-router-dom";
 
-
 // 1. import `ChakraProvider` component
 import {ChakraProvider} from "@chakra-ui/react"
 
