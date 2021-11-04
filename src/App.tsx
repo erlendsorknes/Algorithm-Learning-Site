@@ -4,6 +4,7 @@ import {Route, Switch} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Frontpage from "./components/Frontpage";
 import Algorithms from "./pages/Algorithms";
+import Footer from './components/Footer';
 
 interface NavRouteProps {
     exact: boolean,
@@ -16,6 +17,7 @@ const NavRoute: React.FC<NavRouteProps> = ({exact, path, component}) => (
         <div>
             <Navbar/>
             {component}
+            <Footer />
         </div>
     )}/>
 )
