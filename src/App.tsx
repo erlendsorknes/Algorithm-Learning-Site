@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Route, Switch} from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Frontpage from "./components/Frontpage";
+import Algorithms from "./pages/Algorithms";
+import Footer from './components/Footer';
+
+interface NavRouteProps {
+    exact: boolean,
+    path: string,
+    component: React.ReactNode
+}
+
+const NavRoute: React.FC<NavRouteProps> = ({exact, path, component}) => (
+    <Route exact={exact} path={path} render={(props) => (
+        <div>
+            <Navbar/>
+            {component}
+            <Footer />
+        </div>
+    )}/>
+)
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <Switch>
+                <NavRoute exact={true} path="/" component={<Frontpage />}/>
+                <NavRoute exact={true} path="/algorithms" component={<Algorithms/>}/>
+                <NavRoute exact={true} path="/datastructures" component={<Frontpage />}/>
+            </Switch>
+        </div>
+    );
 }
+
 
 export default App;
