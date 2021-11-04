@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button, Container, Heading, Stack, Text,} from '@chakra-ui/react';
+import {Link} from 'react-router-dom';
 
 const Frontpage = () => {
     return (
@@ -20,20 +21,24 @@ const Frontpage = () => {
                     Illustrative animations, pseudocode and detailed descriptions.
                 </Text>
                 <Stack pt="1rem" alignItems={["center", null]} spacing={10} direction={['column', 'row']}>
+                    <Link to="algorithms">
+                        <Button
+                            rounded={'full'}
+                            px={6}
+                            w={["10em", null]}
+                            colorScheme={'red'}>
+                            Algorithms
+                        </Button>
+                    </Link>
+                    <Link to="datastructures">
                     <Button
-                        rounded={'full'}
-                        px={6}
-                        w={["10em", null]}
-                        colorScheme={'red'}>
-                        Algorithms
+                            rounded={'full'}
+                            px={6}
+                            w={["10em", null]}
+                            colorScheme={'blue'}>
+                            Datastructures
                     </Button>
-                    <Button
-                        rounded={'full'}
-                        px={6}
-                        w={["10em", null]}
-                        colorScheme={'blue'}>
-                        Datastructures
-                    </Button>
+                    </Link>
                 </Stack>
             </Stack>
 
