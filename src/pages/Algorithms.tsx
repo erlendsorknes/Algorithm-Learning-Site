@@ -1,10 +1,13 @@
 import React from 'react'
+import {Box, Flex, Container} from '@chakra-ui/react';
 
 const Algorithms = () => {
     return (
-        <div>
+       <Container
+        textAlign={'center'}
+        >
             halla
-        </div>
+       </Container>
     )
 }
 

@@ -1,29 +1,29 @@
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
 import {
-    Box,
-    Button,
-    Flex,
-    HStack,
-    IconButton,
-    Link,
-    Menu,
-    MenuDivider,
-    MenuItem,
-    MenuList,
-    Stack,
-    useColorMode,
-    useColorModeValue,
-    useDisclosure,
+  Box,
+  Button,
+  Flex,
+  HStack,
+  IconButton,
+  Link,
+  Menu,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Stack,
+  useColorMode,
+  useColorModeValue,
+  useDisclosure,
 } from '@chakra-ui/react';
-import {Link as RouterLink} from "react-router-dom"
-import {MoonIcon, SunIcon} from '@chakra-ui/icons';
+import { Link as RouterLink } from "react-router-dom"
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 
 const links = ['Algorithms', 'Datastructures', 'Help Us'];
 
 interface NavLinkProps {
-    children?: ReactNode;
-    link: string;
+  children?: ReactNode;
+  link: string;
 }
 
 const NavLink = ({ children, link }: NavLinkProps) => (
@@ -35,10 +35,10 @@ const NavLink = ({ children, link }: NavLinkProps) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    >
-      <RouterLink to={link}>
-          {children}
-      </RouterLink>
+  >
+    <RouterLink to={link}>
+      {children}
+    </RouterLink>
   </Link>
 );
 
@@ -48,7 +48,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box marginBottom={'100px'} bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}

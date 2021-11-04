@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Frontpage from "./components/Frontpage";
 import Algorithms from "./pages/Algorithms";
 import Footer from './components/Footer';
+import ScrolledDown from './components/ScrolledDown';
 
 interface NavRouteProps {
     exact: boolean,
@@ -16,8 +17,8 @@ const NavRoute: React.FC<NavRouteProps> = ({exact, path, component}) => (
     <Route exact={exact} path={path} render={(props) => (
         <div>
             <Navbar/>
-            {component}
-            <Footer />
+            <Frontpage/>
+            <ScrolledDown/>
         </div>
     )}/>
 )
