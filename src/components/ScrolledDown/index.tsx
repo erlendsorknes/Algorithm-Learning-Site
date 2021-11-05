@@ -1,5 +1,7 @@
 import React from 'react'
-import {Container, Box, Flex, Image, Heading, Text} from '@chakra-ui/react';
+import {Container, Box, Flex, Image, Heading, Text, Button} from '@chakra-ui/react';
+import Item from './Item';
+import { Link } from 'react-router-dom';
 
 const ScrolledDown = () => {
     return (
@@ -12,35 +14,43 @@ const ScrolledDown = () => {
             mb="50px"
             >
             <Heading
-            fontFamily="Consolas">
-                Algorithms
+            fontFamily=""
+            fontSize="40px"
+            >
+               Our favorite algorithms
             </Heading>
             </Container>
             <Flex direction="row" justifyContent="space-around" mt="30px">
-                <Box mb="100px">
-                    <Image src="https://images.unsplash.com/photo-1520697517317-6767553cc51a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
-                    boxSize="300px"
-                    />
-                    <Heading as="h3" size="lg" mt="20px" ml="5px" fontFamily="Consolas">
-                        The rot cutting problem
-                    </Heading>
-                    <Text fontSize="lg">
-                        Solving the classic "Rod cutting problem" with algorithms
-                    </Text>
-                </Box>
-                <Box>
-                    <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Bubblesort-edited-color.svg/512px-Bubblesort-edited-color.svg.png"
-                    boxSize="300px"
-                    />
-                    <Heading as="h3" size="lg" mt="20px" ml="60px" fontFamily="Consolas">
-                        Bubble Sort
-                    </Heading>
-                    <Text fontSize="lg" ml="40px">
-                        Learn how bubble sort works
+                <Item 
+                link="algorithms"
+                img="https://images.unsplash.com/photo-1520697517317-6767553cc51a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
+                title="Rod Cutting"
+                text="Learn how to solve the famous rod cutting problem with the help of algorithms!" />
 
-                    </Text>
-                </Box>
+                <Item 
+                link="MergeSort"
+                img="https://www.biteinteractive.com/wp-content/uploads/2021/06/git-merges.png"
+                text="Learn how to sort arrays by splitting recurrsivly and merging them"
+                title="Merge Sort" />
+
+                <Item
+                link="BubbleSort"
+                img="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Bubblesort-edited-color.svg/512px-Bubblesort-edited-color.svg.png"
+                text="Learn how bubble sort works"
+                title="Bubble sort" />
             </Flex>
+            <Link to="algorithms">
+            <Button
+            colorScheme="teal"
+            variant="solid"
+            ml="650px"
+            mb="30px"
+            height="50px"
+            width="150px"
+            >
+                Learn more!
+            </Button>
+            </Link>
         </Box>
     )
 }
