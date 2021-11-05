@@ -17,8 +17,8 @@ const NavRoute: React.FC<NavRouteProps> = ({exact, path, component}) => (
     <Route exact={exact} path={path} render={(props) => (
         <div>
             <Navbar/>
-            <Frontpage/>
-            <ScrolledDown/>
+            {component}
+            <Footer />
         </div>
     )}/>
 )

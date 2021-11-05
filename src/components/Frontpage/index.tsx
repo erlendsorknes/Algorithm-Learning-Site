@@ -1,9 +1,11 @@
 import React from 'react'
 import {Button, Container, Heading, Stack, Text,} from '@chakra-ui/react';
 import {Link} from 'react-router-dom';
+import ScrolledDown from '../ScrolledDown';
 
 const Frontpage = () => {
     return (
+        <>
         <Container
         textAlign={'center'}
         backgroundImage="url('https://images.unsplash.com/photo-1580777361964-27e9cdd2f838?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2128&q=80')"
@@ -30,6 +32,8 @@ const Frontpage = () => {
                 </Heading>
             </Stack>
         </Container>
+            <ScrolledDown/>
+        </>
     )
 }
 

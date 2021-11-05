@@ -5,8 +5,7 @@ import {
 } from '@chakra-ui/react';
 
 const Footer = () => (
-    <Flex position="fixed" left="0" bottom="0" width="100%" alignItems="flex-start" justifyContent="space-around" bg={useColorModeValue('gray.100', 'gray.900')}>
-        
+    <Flex left="0" bottom="0" width="100%" alignItems="flex-start" justifyContent="space-around" bg={useColorModeValue('gray.100', 'gray.900')}>
         <Flex direction="column" p="4" rounded="6">
             <h2><b>Contributors:</b></h2>
             <p>Erlend Sorknes</p>
