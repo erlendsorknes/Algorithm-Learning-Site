@@ -1,6 +1,7 @@
-import React from 'react'
-import {Box, Heading, Image, Text} from '@chakra-ui/react';
+import React, {useRef} from 'react'
+import {Box, Heading, Image, ScaleFade, Text} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import {useInViewport} from 'react-in-viewport';
 
 
 
@@ -12,9 +13,21 @@ interface Props{
 }
 
 const Item = ({title,img,text, link}:Props) => {
+
+    const ref = useRef(null);
+    const {enterCount} = useInViewport(
+        ref,
+        { rootMargin:"-200px"},
+        {disconnectOnLeave: false},
+        {}
+    ); 
+
+
     return (
+        <ScaleFade initialScale={0.8} in={enterCount > 0} whileHover={{scale:1.1}}>
         <Box mb="100px"
         width="380px"
+        ref={ref}
         >
         <Link to={link}>
         <Image src={img}
@@ -29,6 +42,7 @@ const Item = ({title,img,text, link}:Props) => {
             {text}
         </Text>
     </Box>
+    </ScaleFade>
     )
 }
 

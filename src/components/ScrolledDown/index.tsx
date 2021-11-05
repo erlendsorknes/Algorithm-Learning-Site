@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container, Box, Flex, Image, Heading, Text, Button} from '@chakra-ui/react';
+import {Container, Box, Flex, Image, Heading, Text, Button, ScaleFade} from '@chakra-ui/react';
 import Item from './Item';
 import { Link } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ const ScrolledDown = () => {
             </Container>
             <Flex direction="row" justifyContent="space-around" mt="30px">
                 <Item 
-                link="algorithms"
+                link="RodCutting"
                 img="https://images.unsplash.com/photo-1520697517317-6767553cc51a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
                 title="Rod Cutting"
                 text="Learn how to solve the famous rod cutting problem with the help of algorithms!" />
@@ -40,16 +40,17 @@ const ScrolledDown = () => {
                 title="Bubble sort" />
             </Flex>
             <Link to="algorithms">
-            <Button
-            colorScheme="teal"
-            variant="solid"
-            ml="650px"
-            mb="30px"
-            height="50px"
-            width="150px"
-            >
-                Learn more!
-            </Button>
+                <Button
+                colorScheme="teal"
+                variant="solid"
+                ml="45%"
+                mb="30px"
+                height="50px"
+                width="150px"
+                mt="-20px"
+                >
+                    Learn more!
+                </Button>
             </Link>
         </Box>
     )
