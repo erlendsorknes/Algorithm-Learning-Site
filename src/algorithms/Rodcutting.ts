@@ -1,9 +1,10 @@
+// @ts-ignore
 class Rodcutting {
-    values: number[] = [3, 5, 8, 4, 10, 12]
+    values: number[]
     memory: number[]
-    length: number;
+    length: number
 
-    constructor(values: number[], length: number) {
+    constructor(length: number, values: number[] = [3, 5, 8, 4, 10, 12]) {
         this.values = values;
         this.memory = new Array(length).map(_ => 0);
         this.length = length;
@@ -11,19 +12,40 @@ class Rodcutting {
         this.memory[0] = values[0]
     }
 
-    solve(len: number): number {
-        if (len === 1) {
-            return this.values[0]
-        } else if (this.memory[len - 1] !== 0) {
-            return this.memory[len - 1]
+    solve() {
+        return this.internal_solve(this.length);
+    }
 
-        }
-        for (let i = 1; i < len-1; i++) {
-            const cost = this.values[i-1] + this.solve(len-1);
+    internal_solve(len: number): number {
+        if (len === 0) {
+            return 0
         }
 
-        return 0
+        let max = 0;
+
+        for (let i = 0; i < len; i++) {
+            let cost: number;
+            let p1: number = this.memory[i] ? this.memory[i] :
+
+
+            if (this.memory[len-i-1] !== 0) {
+                cost = this.memory[len-i-1]
+            } else {
+                cost = this.values[i] + this.internal_solve(len-i-1)
+                this.memory[len-i-1] = cost;
+            }
+
+            if (cost > max) {
+                max = cost
+            }
+        }
+
+        console.log(max)
+        return max
     }
 }
 
-export default Rodcutting;
+let t = new Rodcutting(4);
+t.solve()
+
+// export default Rodcutting;
