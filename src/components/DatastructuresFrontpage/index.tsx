@@ -1,9 +1,17 @@
-import { Container, Box, Heading } from '@chakra-ui/react';
+import { Container, Box, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
+import BinaryTree from '../../algorithms/Dijkstra/heaps';
+import Node from '../../components/DatastructuresFrontpage';
 
 
 
 const DatastructuresFrontpage = () => {
+
+    const binaryTree = new BinaryTree();
+    binaryTree.insert(10).insert(20);
+    console.log(binaryTree);
+
+
     return(
         <Container
         w="full"
@@ -21,7 +29,7 @@ const DatastructuresFrontpage = () => {
                 <Heading mt="20px">
                     Learn more about datastructures
                 </Heading>
-                
+                <Node />
             </Box>
         </Container>
     )

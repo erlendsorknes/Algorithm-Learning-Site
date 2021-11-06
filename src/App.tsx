@@ -17,7 +17,7 @@ const NavRoute: React.FC<NavRouteProps> = ({exact, path, component}) => (
     <Route exact={exact} path={path} render={(props) => (
         <div>
             <Navbar/>
-            {component}
+            {component} 
         </div>
     )}/>
 )
