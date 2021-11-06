@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import {Route, Switch} from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Frontpage from "./components/Frontpage";
-import Algorithms from "./pages/Algorithms";
+import Frontpage from "./pages/Frontpage";
+import Algorithms from "./pages/Algorithms/Algorithms";
 import Footer from './components/Footer';
 import ScrolledDown from './components/ScrolledDown';
 
@@ -18,7 +18,6 @@ const NavRoute: React.FC<NavRouteProps> = ({exact, path, component}) => (
         <div>
             <Navbar/>
             {component}
-            <Footer />
         </div>
     )}/>
 )

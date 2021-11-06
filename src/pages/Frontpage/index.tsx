@@ -1,7 +1,8 @@
 import React from 'react'
 import {Button, Container, Heading, Stack, Text,} from '@chakra-ui/react';
 import {Link} from 'react-router-dom';
-import ScrolledDown from '../ScrolledDown';
+import ScrolledDown from '../../components/ScrolledDown';
+import DatastructuresFrontpage from '../../components/DatastructuresFrontpage';
 
 const Frontpage = () => {
     return (
@@ -21,7 +22,6 @@ const Frontpage = () => {
                 <Heading
                     mt={'20%'}
                     color={'white'}
-                    fontFamily="Consolas"
                     fontWeight={700}
                     fontSize={{base: '4xl', sm: '2xl', md: '8xl'}}
                     lineHeight='110%'
@@ -33,6 +33,8 @@ const Frontpage = () => {
             </Stack>
         </Container>
             <ScrolledDown/>
+            <DatastructuresFrontpage />
+
         </>
     )
 }
