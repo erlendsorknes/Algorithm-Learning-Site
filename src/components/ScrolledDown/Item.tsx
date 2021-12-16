@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
-import { Box, Heading, Image, ScaleFade, Text } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
-import { useInViewport } from 'react-in-viewport';
+import React, { useRef } from "react";
+import { Box, Heading, Image, ScaleFade, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { useInViewport } from "react-in-viewport";
 
 interface Props {
   title: string;
@@ -14,7 +14,7 @@ const Item = ({ title, img, text, link }: Props) => {
   const ref = useRef(null);
   const { enterCount } = useInViewport(
     ref,
-    { rootMargin: '-200px' },
+    { rootMargin: "-200px" },
     { disconnectOnLeave: false },
     {}
   );
