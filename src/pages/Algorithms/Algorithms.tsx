@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Box, Flex, Container } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
+import { Box, Flex, Container, Select, Button } from '@chakra-ui/react'
 import { setRes } from '../../utils/Canvas'
 import { getNUnique } from '../../utils/Util'
 import Drawer from '../../utils/Drawer'
@@ -9,57 +9,61 @@ import InsertionSortAnimator from '../../utils/algorithms/animators/InsertionSor
 import InsertionSortIterator from '../../utils/algorithms/iterators/InsertionSortIterator'
 import SelectionSortIterator from '../../utils/algorithms/iterators/SelectionSortIterator'
 import SelectionSortAnimator from '../../utils/algorithms/animators/SelectionSortAnimator'
-
-type algorithmString = 'Selection Sort' | 'Insertion Sort' | 'Merge Sort'
-
-function visualizeAlgorithm(algo: string, canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
-  const d = new Drawer(canvas, context)
-
-  d.clear()
-
-  const numbers = getNUnique(100)
-
-  let i: any
-  let a: any
-
-  switch (algo) {
-    case 'Selection Sort':
-      i = new SelectionSortIterator(numbers)
-      a = new SelectionSortAnimator(d, i)
-      break
-    case 'Insertion Sort':
-      i = new InsertionSortIterator(numbers)
-      a = new InsertionSortAnimator(d, i)
-      break
-    case 'Merge Sort':
-      i = new MergeSortIterator(numbers)
-      a = new MergeSortAnimator(d, i)
-      break
-  }
-
-  a.draw()
-
-  document.querySelector('button')?.addEventListener('click', () => a.animate(50))
-}
-
-const select = document.querySelector('select')
-if (select) {
-  select.add(new Option('Selection Sort', 'Selection Sort'))
-  select.add(new Option('Insertion Sort', 'Insertion Sort'))
-  select.add(new Option('Merge Sort', 'Merge Sort'))
-
-  select.addEventListener('change', event => {
-    visualizeAlgorithm(select.value)
-  })
-}
+import AlgorithmAnimator from '../../utils/algorithms/animators/AlgorithmAnimator'
 
 const Algorithms = () => {
+  console.log('rendering')
+  const [selectValue, setSelectValue] = useState<string>('Test')
+  const [intervalInstance, setIntervalInstance] = useState<ReturnType<typeof setInterval> | null>(null)
+  const [numbers, setNumbers] = useState<number[]>(getNUnique(40))
+  const [drawer, setDrawer] = useState<Drawer | null>(null)
+
   useEffect(() => {
     const canvas = document.querySelector('canvas')
+    console.log(canvas)
     const c = canvas?.getContext('2d')
-    if (canvas && c) setRes(canvas, c, 800, 800)
+
+    if (canvas && c) {
+      setRes(canvas, c, 800, 800)
+      setDrawer(new Drawer(canvas, c))
+    }
   }, [])
 
-  return <canvas></canvas>
+  const handleClick = () => {
+    if (intervalInstance != null) {
+      clearInterval(intervalInstance)
+      setIntervalInstance(null)
+    }
+    let i: any
+    let a: AlgorithmAnimator | null = null
+    if (drawer) {
+      if (selectValue == 'Selection Sort') {
+        console.log('seleciton sort')
+        i = new SelectionSortIterator(numbers)
+        a = new SelectionSortAnimator(drawer, i)
+        const a1 = new SelectionSortAnimator(drawer, i)
+        a1.animate(50)
+      } else if (selectValue == 'Insertion Sort') {
+        i = new InsertionSortIterator(numbers)
+        a = new InsertionSortAnimator(drawer, i)
+      } else if (selectValue == 'Merge Sort') {
+        i = new MergeSortIterator(numbers)
+        a = new MergeSortAnimator(drawer, i)
+      }
+    }
+    if (a) a.draw()
+  }
+
+  return (
+    <>
+      <Select value={selectValue} onChange={event => setSelectValue(event.target.value)}>
+        <option value={'Insertion Sort'}>Insertion Sort</option>
+        <option value={'Selection Sort'}>Selection Sort</option>
+        <option value={'Merge Sort'}>Merge Sort</option>
+      </Select>
+      <Button onClick={handleClick}>Sort!</Button>
+      <canvas style={{ background: 'white' }} />
+    </>
+  )
 }
 export default Algorithms
