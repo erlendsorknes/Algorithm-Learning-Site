@@ -25,7 +25,7 @@ export default class InsertionSortAnimator implements AlgorithmAnimator {
       }
       this.drawer.drawRect(
         i * rectWidth,
-        800,
+        this.drawer.getHeight(),
         rectWidth,
         -this.iterator.numbers[i] * 5,
         color,
@@ -55,5 +55,11 @@ export default class InsertionSortAnimator implements AlgorithmAnimator {
 
   animate(ms: number) {
     this.interval = setInterval(this.iterateInterval, ms)
+  }
+
+  stop() {
+    if (this.interval) {
+      clearInterval(this.interval)
+    }
   }
 }

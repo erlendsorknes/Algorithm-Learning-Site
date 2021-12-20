@@ -25,7 +25,7 @@ export default class SelectionSortAnimator implements AlgorithmAnimator {
       }
       this.drawer.drawRect(
         i * rectWidth,
-        800,
+        this.drawer.getHeight(),
         rectWidth,
         -this.iterator.numbers[i] * 5,
         color,
@@ -55,5 +55,13 @@ export default class SelectionSortAnimator implements AlgorithmAnimator {
 
   animate(ms: number) {
     this.interval = setInterval(this.iterateInterval, ms)
+  }
+
+  stop() {
+    console.log(this.interval)
+    if (this.interval) {
+      console.log('clearing interval')
+      clearInterval(this.interval)
+    }
   }
 }

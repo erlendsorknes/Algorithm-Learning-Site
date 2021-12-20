@@ -13,53 +13,68 @@ import AlgorithmAnimator from '../../utils/algorithms/animators/AlgorithmAnimato
 
 const Algorithms = () => {
   console.log('rendering')
-  const [selectValue, setSelectValue] = useState<string>('Test')
-  const [intervalInstance, setIntervalInstance] = useState<ReturnType<typeof setInterval> | null>(null)
+  const [selectValue, setSelectValue] = useState<number>(0)
   const [numbers, setNumbers] = useState<number[]>(getNUnique(40))
+  const [animator, setAnimator] = useState<AlgorithmAnimator | null>(null)
   const [drawer, setDrawer] = useState<Drawer | null>(null)
 
   useEffect(() => {
     const canvas = document.querySelector('canvas')
-    console.log(canvas)
     const c = canvas?.getContext('2d')
 
     if (canvas && c) {
-      setRes(canvas, c, 800, 800)
-      setDrawer(new Drawer(canvas, c))
+      setRes(canvas, c, window.innerWidth, 400)
+      const drawer = new Drawer(canvas, c)
+      const tempAnimator = new InsertionSortAnimator(drawer, new InsertionSortIterator(numbers))
+
+      tempAnimator.draw()
+
+      setAnimator(tempAnimator)
+      setDrawer(drawer)
     }
   }, [])
 
+  useEffect(() => {
+    // stop animation if animating
+    console.log(selectValue)
+  }, [selectValue])
+
+  const determineAnimator = (): AlgorithmAnimator | null => {
+    if (!drawer) return null
+    // set selection sort as default to avoid null type
+    let animator: AlgorithmAnimator = new SelectionSortAnimator(drawer, new SelectionSortIterator(numbers))
+    switch (selectValue) {
+      case 0:
+        break
+      case 1:
+        animator = new InsertionSortAnimator(drawer, new InsertionSortIterator(numbers))
+        break
+      case 2:
+        animator = new MergeSortAnimator(drawer, new MergeSortIterator(numbers))
+        break
+    }
+    return animator
+  }
+
   const handleClick = () => {
-    if (intervalInstance != null) {
-      clearInterval(intervalInstance)
-      setIntervalInstance(null)
+    if (!drawer) return
+
+    if (animator) {
+      animator.stop()
     }
-    let i: any
-    let a: AlgorithmAnimator | null = null
-    if (drawer) {
-      if (selectValue == 'Selection Sort') {
-        console.log('seleciton sort')
-        i = new SelectionSortIterator(numbers)
-        a = new SelectionSortAnimator(drawer, i)
-        const a1 = new SelectionSortAnimator(drawer, i)
-        a1.animate(50)
-      } else if (selectValue == 'Insertion Sort') {
-        i = new InsertionSortIterator(numbers)
-        a = new InsertionSortAnimator(drawer, i)
-      } else if (selectValue == 'Merge Sort') {
-        i = new MergeSortIterator(numbers)
-        a = new MergeSortAnimator(drawer, i)
-      }
-    }
-    if (a) a.draw()
+
+    const newAnimator = determineAnimator()
+    newAnimator?.animate(100)
+
+    setAnimator(newAnimator)
   }
 
   return (
     <>
-      <Select value={selectValue} onChange={event => setSelectValue(event.target.value)}>
-        <option value={'Insertion Sort'}>Insertion Sort</option>
-        <option value={'Selection Sort'}>Selection Sort</option>
-        <option value={'Merge Sort'}>Merge Sort</option>
+      <Select value={selectValue} onChange={event => setSelectValue(Number(event.target.value))}>
+        <option value={0}>Selection Sort</option>
+        <option value={1}>Insertion Sort</option>
+        <option value={2}>Merge Sort</option>
       </Select>
       <Button onClick={handleClick}>Sort!</Button>
       <canvas style={{ background: 'white' }} />

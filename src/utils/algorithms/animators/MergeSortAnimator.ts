@@ -17,11 +17,11 @@ export default class MergeSortAnimator implements AlgorithmAnimator {
 
     const rectWidth = this.drawer.getWidth() / this.iterator.numbers.length
     for (let i = 0; i < this.iterator.numbers.length; i++) {
-      let color: string = 'black'
+      let color = 'black'
       if (i == this.iterator.j) color = 'red'
       this.drawer.drawRect(
         i * rectWidth,
-        800,
+        this.drawer.getHeight(),
         rectWidth,
         -this.iterator.numbers[i] * 5,
         color,
@@ -43,5 +43,11 @@ export default class MergeSortAnimator implements AlgorithmAnimator {
 
   animate(ms: number) {
     this.interval = setInterval(this.iterateInterval, ms)
+  }
+
+  stop() {
+    if (this.interval) {
+      clearInterval(this.interval)
+    }
   }
 }
