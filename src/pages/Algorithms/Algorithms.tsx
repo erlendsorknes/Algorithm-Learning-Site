@@ -10,6 +10,7 @@ import InsertionSortIterator from '../../utils/algorithms/iterators/InsertionSor
 import SelectionSortIterator from '../../utils/algorithms/iterators/SelectionSortIterator'
 import SelectionSortAnimator from '../../utils/algorithms/animators/SelectionSortAnimator'
 import AlgorithmAnimator from '../../utils/algorithms/animators/AlgorithmAnimator'
+import useResize from '../../utils/hooks/useResize'
 
 const Algorithms = () => {
   console.log('rendering')
@@ -17,6 +18,16 @@ const Algorithms = () => {
   const [numbers, setNumbers] = useState<number[]>(getNUnique(40))
   const [animator, setAnimator] = useState<AlgorithmAnimator | null>(null)
   const [drawer, setDrawer] = useState<Drawer | null>(null)
+  const windowSize = useResize()
+
+  useEffect(() => {
+    const canvas = document.querySelector('canvas')
+    const c = canvas?.getContext('2d')
+
+    if (canvas && c && windowSize.width) {
+      setRes(canvas, c, windowSize.width, 400)
+    }
+  }, [windowSize])
 
   useEffect(() => {
     const canvas = document.querySelector('canvas')

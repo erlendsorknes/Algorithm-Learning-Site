@@ -15,7 +15,6 @@ export default class InsertionSortAnimator implements AlgorithmAnimator {
   draw(active?: number, min?: number) {
     this.drawer.clear()
 
-    const rectWidth = this.drawer.getWidth() / this.iterator.numbers.length
     for (let i = 0; i < this.iterator.numbers.length; i++) {
       let color = 'black'
       if (min && i == min) {
@@ -23,13 +22,13 @@ export default class InsertionSortAnimator implements AlgorithmAnimator {
       } else if (active && i == active) {
         color = 'red'
       }
-      this.drawer.drawRect(
-        i * rectWidth,
+      this.drawer.drawDynamicRect(
         this.drawer.getHeight(),
-        rectWidth,
         -this.iterator.numbers[i] * 5,
         color,
-        this.iterator.numbers[i]
+        this.iterator.numbers[i],
+        i,
+        this.iterator.numbers.length
       )
     }
   }

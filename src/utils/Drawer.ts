@@ -25,6 +25,14 @@ export default class Drawer {
     this.c.closePath()
   }
 
+  // let drawer handle dynamic resizing of poles
+  drawDynamicRect(y: number, h: number, color: string, value: number, n: number, tot: number) {
+    // fetching width from canvas probably demands a lot of resources and should be handled in another way
+    const rectWidth = this.getWidth() / tot
+    const x = n * rectWidth
+    this.drawRect(x, y, rectWidth, h, color, value)
+  }
+
   getWidth() {
     return this.canvas.getBoundingClientRect().width
   }
