@@ -3,7 +3,7 @@ import './App.css'
 import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Frontpage from './pages/Frontpage'
-import Algorithms from './pages/Algorithms/Algorithms'
+import Algorithms from './pages/Algorithms'
 
 interface NavRouteProps {
   exact: boolean
