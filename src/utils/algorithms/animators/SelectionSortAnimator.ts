@@ -1,6 +1,7 @@
 import Drawer from '../../Drawer'
 import SelectionSortIterator from '../iterators/SelectionSortIterator'
 import AlgorithmAnimator from './AlgorithmAnimator'
+import { stopAnimation } from 'framer-motion/types/render/utils/animation'
 
 export default class SelectionSortAnimator implements AlgorithmAnimator {
   drawer: Drawer
@@ -34,6 +35,7 @@ export default class SelectionSortAnimator implements AlgorithmAnimator {
   }
 
   iterateInterval = () => {
+    console.log('interval')
     if (this.iterator.isSorted()) {
       this.draw()
       if (this.interval) clearInterval(this.interval)
@@ -56,10 +58,13 @@ export default class SelectionSortAnimator implements AlgorithmAnimator {
     this.interval = setInterval(this.iterateInterval, ms)
   }
 
+  changeAnimationDelay(ms: number) {
+    this.stop()
+    this.animate(ms)
+  }
+
   stop() {
-    console.log(this.interval)
     if (this.interval) {
-      console.log('clearing interval')
       clearInterval(this.interval)
     }
   }

@@ -61,4 +61,9 @@ export default class InsertionSortAnimator implements AlgorithmAnimator {
       clearInterval(this.interval)
     }
   }
+
+  changeAnimationDelay(ms: number) {
+    this.stop()
+    this.animate(ms)
+  }
 }
