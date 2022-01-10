@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Frontpage from './pages/Frontpage'
 import Algorithms from './pages/Algorithms'
+import Footer from './components/Footer'
+import MergeSortPage from './pages/MergeSortPage'
 
 interface NavRouteProps {
   exact: boolean
@@ -19,6 +21,7 @@ const NavRoute: React.FC<NavRouteProps> = ({ exact, path, component }) => (
       <div>
         <Navbar />
         {component}
+        <Footer />
       </div>
     )}
   />
@@ -31,6 +34,7 @@ function App() {
         <NavRoute exact={true} path="/" component={<Frontpage />} />
         <NavRoute exact={true} path="/algorithms" component={<Algorithms />} />
         <NavRoute exact={true} path="/datastructures" component={<Frontpage />} />
+        <NavRoute exact={true} path="/Merge" component={<MergeSortPage />} />
       </Switch>
     </div>
   )

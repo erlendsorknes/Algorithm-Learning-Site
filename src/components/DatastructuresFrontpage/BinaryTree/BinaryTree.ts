@@ -1,13 +1,13 @@
-interface INode<U> {
-  value: U
-  left: INode<U> | null
-  right: INode<U> | null
+interface INode {
+  value: number
+  left: INode | null
+  right: INode | null
 }
 
-class BinaryTree<U> {
-  private root: INode<U> | undefined
+class BinaryTree {
+  public root: INode | undefined
 
-  createNewNode = (value: U): INode<U> => {
+  createNewNode = (value: number): INode => {
     return {
       value,
       left: null,
@@ -15,7 +15,7 @@ class BinaryTree<U> {
     }
   }
 
-  insert = (value: U) => {
+  insert = (value: number) => {
     const currentNode = this.createNewNode(value)
     if (!this.root) {
       this.root = currentNode
@@ -25,9 +25,9 @@ class BinaryTree<U> {
     return this
   }
 
-  private insertIntoCurrentNode = (currentNode: INode<U>) => {
+  private insertIntoCurrentNode = (currentNode: INode) => {
     const { value } = currentNode
-    const traverse = (node: INode<U>) => {
+    const traverse = (node: INode) => {
       if (value > node.value) {
         if (!node.right) {
           node.right = currentNode
@@ -38,14 +38,14 @@ class BinaryTree<U> {
         } else traverse(node.left)
       }
     }
-    traverse(this.root as INode<U>)
+    traverse(this.root as INode)
   }
 
-  postOrder = (): U[] => {
-    let result: U[]
+  postOrder = (): number[] => {
+    let result: number[]
     // eslint-disable-next-line prefer-const
     result = []
-    const traverse = (node: INode<U>) => {
+    const traverse = (node: INode) => {
       node.left && traverse(node.left)
       node.right && traverse(node.right)
       result.push(node.value)

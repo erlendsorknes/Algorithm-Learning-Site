@@ -17,7 +17,7 @@ import BinaryTree from './BinaryTree/BinaryTree'
 const DatastructuresFrontpage = () => {
   const [value, setValue] = useState(0)
   const [print, setPrint] = useState(false)
-  const [binaryTree, setBinaryTree] = useState(new BinaryTree<number>())
+  const [binaryTree, setBinaryTree] = useState(new BinaryTree())
   const [test, setTest] = useState(false)
 
   const getData = (val: any) => {
