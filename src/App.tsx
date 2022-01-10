@@ -6,6 +6,7 @@ import Frontpage from './pages/Frontpage'
 import Algorithms from './pages/Algorithms'
 import Footer from './components/Footer'
 import MergeSortPage from './pages/MergeSortPage'
+import PageNotFound from './pages/PageNotFound'
 
 interface NavRouteProps {
   exact: boolean
@@ -34,7 +35,8 @@ function App() {
         <NavRoute exact={true} path="/" component={<Frontpage />} />
         <NavRoute exact={true} path="/algorithms" component={<Algorithms />} />
         <NavRoute exact={true} path="/datastructures" component={<Frontpage />} />
-        <NavRoute exact={true} path="/Merge" component={<MergeSortPage />} />
+        <NavRoute exact={true} path="/MergeSort" component={<MergeSortPage />} />
+        <NavRoute exact={false} path="/" component={<PageNotFound />} />
       </Switch>
     </div>
   )

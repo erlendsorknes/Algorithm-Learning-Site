@@ -1,4 +1,4 @@
-import { Flex, useColorModeValue } from '@chakra-ui/react'
+import { Flex, Link, useColorModeValue } from '@chakra-ui/react'
 
 const Footer = () => (
   <Flex
@@ -21,7 +21,9 @@ const Footer = () => (
       <h2>
         <b>Contact us:</b>
       </h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe officia animi iusto!</p>
+      <Link color="teal.500" href="https://github.com/Erlend0703/Algorithm-Learning-Site">
+        Our GitHub repository
+      </Link>
     </Flex>
   </Flex>
 )

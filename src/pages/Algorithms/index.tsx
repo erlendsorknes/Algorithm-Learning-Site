@@ -13,15 +13,21 @@ export const index = () => {
           first="Merge sort"
           second="Insertion sort"
           third="Selection sort"
-          color="tomato"
+          color="#4281A4"
         />
-        <AlgorithmItem title="Pathfinding" first="Dijkstra" second="something" third="Belmon-Ford" color="blue.500" />
+        <AlgorithmItem
+          title="Pathfinding"
+          first="Dijkstra"
+          second="Floyd-Warshall"
+          third="Belmon-Ford"
+          color="#48A9A6"
+        />
         <AlgorithmItem
           title="Others"
           first="Dynamic programming"
           second="Greedy Algorithms "
           third="Max flow"
-          color="red.500"
+          color="#D4B483"
         />
       </Flex>
     </Box>
